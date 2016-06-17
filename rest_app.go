@@ -1,3 +1,7 @@
+/*
+* this demo shows how to implement a full RESTful web-app
+* with data Persistence "using postgresSQL as our data-store"
+**/
 package main
 
 import (
