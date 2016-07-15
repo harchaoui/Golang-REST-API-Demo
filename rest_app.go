@@ -18,7 +18,6 @@ var (
 )
 
 func init() {
-
 	var err error
 
 	//Create the Connection Pool
@@ -34,10 +33,12 @@ func init() {
 	if err = dbConnection.Ping(); err != nil {
 		log.Fatal(err)
 		return
-	} else {
-		fmt.Printf("Database Connection Established!\n")
 	}
 
+	fmt.Println("Database Connection Established!")
+
+	// Prints logs in the format 2009/01/23 01:23:23 /a/b/c/d.go:23
+	log.SetFlags(Ldate | Ltime | log.Llongfile)
 }
 
 type Customer struct {
@@ -60,22 +61,24 @@ func main() {
 //Handle the third route /customers/create
 func customersCreate(w http.ResponseWriter, r *http.Request) {
 	//check if the Method is Post
-	if r.Method != "POST" {
+	if r.Method != http.MethodPost {
 		http.Error(w, http.StatusText(405), 405)
-		log.Fatal(w)
+		log.Println(w)
 		return
 	}
 
 	// get params from the post Request
-	uid := r.FormValue("uid")
-	name := r.FormValue("name")
-	email := r.FormValue("email")
+	var (
+		uid   = r.FormValue("uid")
+		name  = r.FormValue("name")
+		email = r.FormValue("email")
+	)
 
 	//check if they are empty
 	if uid == "" || name == "" || email == "" {
 		//Bad Request ... we need a uid !
 		http.Error(w, http.StatusText(400), 400)
-		log.Fatal(w)
+		log.Println(w)
 		return
 	}
 
@@ -88,7 +91,7 @@ func customersCreate(w http.ResponseWriter, r *http.Request) {
 	//check if any error
 	if err != nil {
 		http.Error(w, http.StatusText(500), 500)
-		log.Fatal(err)
+		log.Println(err)
 		return
 	}
 
@@ -97,7 +100,7 @@ func customersCreate(w http.ResponseWriter, r *http.Request) {
 
 	if err != nil {
 		http.Error(w, http.StatusText(500), 500)
-		log.Fatal(err)
+		log.Println(err)
 		return
 	}
 
@@ -109,9 +112,9 @@ func customersCreate(w http.ResponseWriter, r *http.Request) {
 // handle the second route /customers/show
 func customersShow(w http.ResponseWriter, r *http.Request) {
 	//check the request Method again
-	if r.Method != "GET" {
+	if r.Method != http.MethodGet {
 		http.Error(w, http.StatusText(405), 405)
-		log.Fatal(w)
+		log.Println(w)
 		return
 	}
 
@@ -122,7 +125,7 @@ func customersShow(w http.ResponseWriter, r *http.Request) {
 	if uid == "" {
 		//Bad Request ... we need a uid !
 		http.Error(w, http.StatusText(400), 400)
-		log.Fatal(w)
+		log.Println(w)
 		return
 	}
 
@@ -139,16 +142,17 @@ func customersShow(w http.ResponseWriter, r *http.Request) {
 	err := row.Scan(&ctm.uid, &ctm.name, &ctm.email)
 
 	//check if any error !
-	//First we need to check if no row is found !
+	if err != nil {
+		//First we need to check if no row is found !
+		if err == sql.ErrNoRows {
+			http.NotFound(w, r)
+			log.Println(err)
+			return
+		}
 
-	if err == sql.ErrNoRows {
-		http.NotFound(w, r)
-		log.Fatal(err)
-		return
-	} else if err != nil {
 		// internal error
 		http.Error(w, http.StatusText(500), 500)
-		log.Fatal(err)
+		log.Println(err)
 		return
 	}
 
@@ -162,13 +166,12 @@ func customers(w http.ResponseWriter, r *http.Request) {
 
 	// Check the Method sent
 	// We are looking for a GET method or the app will die/ stoped
-	if r.Method != "GET" {
+	if r.Method != http.MethodGet {
 		//any other method is not allowed !
 		http.Error(w, http.StatusText(405), 405)
 		//log the error to the console
-		log.Fatal(w)
+		log.Println(w)
 		return
-
 	}
 
 	// create the query string
@@ -181,7 +184,7 @@ func customers(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		//Internal error
 		http.Error(w, http.StatusText(500), 500)
-		log.Fatal(err)
+		log.Println(err)
 		return
 	}
 	defer rows.Close() // Always close opened any resources
@@ -199,7 +202,7 @@ func customers(w http.ResponseWriter, r *http.Request) {
 
 		if err != nil {
 			http.Error(w, http.StatusText(500), 500)
-			log.Fatal(err)
+			log.Println(err)
 			return
 		}
 
@@ -211,14 +214,14 @@ func customers(w http.ResponseWriter, r *http.Request) {
 
 	if err := rows.Err(); err != nil {
 		http.Error(w, http.StatusText(500), 500)
-		log.Fatal(err)
+		log.Println(err)
 		return
 	}
 
 	//Send data to the output
-	fmt.Fprintf(w, "Customers List \n")
-	//Loopr Over Ctms to print the customers list
+	fmt.Fprintln(w, "Customers List")
 
+	//Loopr Over Ctms to print the customers list
 	for _, ctm := range ctms {
 		fmt.Fprintf(w, "uid:%s name:%s email:%s", ctm.uid, ctm.name, ctm.email)
 	}
