@@ -8,7 +8,7 @@ https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 <a href="https://github.com/harchaoui/restful_demo/blob/master/go%20and%20rest%20API_Writeup_01.pdf" > Go and REST API </a>
 
 # 01 Go And Rest API Presentation
-<iframe width="1280" height="480" src="https://www.youtube.com/embed/kb-6MyFSzLs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Alt text for your video]()](https://www.youtube.com/embed/kb-6MyFSzLs)
 
 # 02- Go and Rest API Demo Application
-<iframe width="1280" height="480" src="https://www.youtube.com/embed/R9iiBJZgsb0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+[![Alt text for your video]()](https://www.youtube.com/embed/R9iiBJZgsb0)
