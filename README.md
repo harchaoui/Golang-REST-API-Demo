@@ -11,4 +11,4 @@ https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 [![Alt text for your video]()](https://www.youtube.com/embed/kb-6MyFSzLs)
 
 # 02- Go and Rest API Demo Application
-[![Alt text for your video]()](https://www.youtube.com/embed/R9iiBJZgsb0)
+(https://www.youtube.com/embed/R9iiBJZgsb0)
