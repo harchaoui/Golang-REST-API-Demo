@@ -1,5 +1,6 @@
 # Golang restful_demo
-هذا المثال  يقدم كيفية أنجاز تصميم لتطبيق RESTful
+هذا المثال  يقدم كيفية أنجاز تصميم لتطبيق 
+RESTful
 
 ## الرابط نحو بحث العلم روي توماس (Link to Roy Thomas Fielding REST API dissertation) 
 https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
