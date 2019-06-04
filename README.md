@@ -2,7 +2,7 @@
 <div dir="rtl"> هذا المثال يقدم كيفية أنجاز تصميم لتطبيق RESTful باستعمال لغة Golang   </div>
 
 
-## (Link to Roy Thomas Fielding REST API dissertation)
+## Roy Thomas Fielding REST API dissertation
 <div dir="rtl"> الرابط نحو بحث العلم روي توماس   </div>
 https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 
@@ -12,10 +12,9 @@ https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 # full Write up PART 1 - Arabic Version
 <a href="https://github.com/harchaoui/restful_demo/blob/master/go%20and%20rest%20API_Writeup_01.pdf" > Go and REST API </a>
 
-
 # Videos
-### 01- REST API Presentation
+### Part 01- REST API Presentation
 https://www.youtube.com/embed/kb-6MyFSzLs
 
-### 02- Go and Rest API Demo Application
+### Part 02- Building REST API Demo Application with Golang
 https://www.youtube.com/embed/R9iiBJZgsb0
