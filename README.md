@@ -13,7 +13,7 @@ https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 
 # Videos
 ### Part 01- REST API Presentation
-![](https://www.youtube.com/embed/kb-6MyFSzLs)
+https://www.youtube.com/watch?v=kb-6MyFSzLs&list=PLxElhAb7qSckksMPVbwh4yJix4LVpSoO6
 
 
 ### Part 02- Building REST API Demo Application with Golang
