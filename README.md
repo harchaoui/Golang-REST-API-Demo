@@ -2,7 +2,7 @@
 <div dir="rtl"> هذا المثال يقدم كيفية أنجاز تصميم لتطبيق RESTful باستعمال لغة Golang   </div>
 
 ## Roy Thomas Fielding REST API dissertation
-<div dir="rtl"> الرابط نحو بحث العلم روي توماس   </div>
+<div dir="rtl"> الرابط نحو بحث العالم روي توماس   </div>
 https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm
 
 # Slides
